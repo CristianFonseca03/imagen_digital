@@ -1,0 +1,1 @@
+web: gunicorn imagen_digital.wsgi
