@@ -17,3 +17,5 @@ class Person(models.Model):
     class Meta:
         verbose_name = 'Persona'
         verbose_name_plural = 'Personas'
+    def __str__(self):
+        return self.first_name

@@ -22,4 +22,5 @@ class Bill(models.Model):
         verbose_name = 'Factura'
         verbose_name_plural = 'Facturas'
 
-
+    def __str__(self):
+        return self.number_bill
