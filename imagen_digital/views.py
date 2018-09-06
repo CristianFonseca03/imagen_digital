@@ -1,7 +1,7 @@
 """Imagen digital views"""
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
@@ -27,3 +27,9 @@ def HelloWorld(request):
 class Home_view(TemplateView):
     """Home view."""
     template_name = 'imagen_digital/home.html'
+
+@login_required
+def logout_view(request):
+    """Logout a user"""
+    logout(request)
+    return redirect('login')

@@ -2,22 +2,28 @@
 {% load static %}
 
 {%block tittle%}<title>Imagen Digital - Home</title>{%endblock%}
-{%block css%}<link rel="stylesheet" href="{% static 'css/styles.css' %}">{%endblock%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">{%endblock%}
 {%block content%}
 <body>
-  <div class="contenedor">
+<div class="contenedor">
     <div class="element element1">
-      <div class="image">
-        <img src="{% static 'img/instagram.png' %}">
-      </div>
-      <h3>{{request.user.username|title }}</h3>
-      <div class="buttons">
-        <button type="button" class="btn btn-primary">Perfil</button>
-        <button type="button" class="btn btn-primary">Cerrar cesión</button>
-      </div>
+        <div class="image">
+            <img src="{% static 'img/instagram.png' %}">
+        </div>
+        <h3>{{request.user.username|title }}</h3>
+        <div class="buttons">
+            <a href="">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Perfil</button>
+            </a>
+            <a href="{% url 'logout'%}">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Cerrar cesión</button>
+            </a>
+
+        </div>
     </div>
     <div class="element element2">2</div>
-  </div>
+</div>
 
 </body>
 {%endblock%}
