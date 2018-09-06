@@ -1,0 +1,52 @@
+*{
+    font-family: "Exo 2","Helvetica Neue",Tahoma,Arial,"Hiragino Kaku Gothic ProN",Meiryo,"Microsoft YaHei","Apple SD Gothic Neo",sans-serif;
+}
+
+body{
+    background-image: url("../img/background.png");
+    background-repeat: repeat;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;  
+    height: 700px;
+    width: 100%;
+}
+.element{
+    display: flex;
+}
+
+.element1{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 25%;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.7);  
+}
+
+.element1>.image{
+    margin: 20px;
+}
+
+.element1>.buttons{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.element1>.buttons>button{
+    margin: 5px;
+}
+
+.element1>h3{
+    color: white;
+}
+
+.element2{
+    background-color: blueviolet;
+    height: 100%;
+    width: 100%;
+}

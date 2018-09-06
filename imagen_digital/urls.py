@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from imagen_digital import views
+from  imagen_digital.views import Home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', Home_view.as_view(), name='home'),
     path('login/', views.login_view, name='login'),
-    path('hello/', views.HelloWorld,name='hello'),
+    path('hello/', views.HelloWorld, name='hello'),
 ]
