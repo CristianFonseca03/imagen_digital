@@ -1,0 +1,37 @@
+{% extends "imagen_digital/base_home.html" %}
+{% load static %}
+
+{%block elemt2_1%}
+<a href="{% url 'home'%}">Inicio</a> > {{user.username | title}}
+{%endblock%}
+
+{%block elemt2%}
+<div class="element element2_2">
+    <div class="circle">{{ user.first_name|make_list|first | title}}</div>
+    <h1>{{user.first_name | title}} {{user.last_name | title}}</h1>
+    <div class="set">
+        <h4>Es superusuario:</h4>
+        {% if user.is_superuser %}
+        <i class="fas fa-check-square" id="check" style="color: green"></i>
+        {% else %}
+        <i class="fas fa-minus-square" id="check" style="color: red"></i>
+        {% endif %}
+
+    </div>
+    <h4>Ultimo ingreso: {{user.last_login|date:'Y-m-d H:i' }}</h4>
+    <div class="set">
+        {% if user.username == request.user.username %}
+        <button type="button" class="btn btn-primary">Modificar</button>
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <button type="button" class="btn btn-danger">Borrar</button>
+        {% endif %}
+    </div>
+    <button type="button" class="btn btn-primary">Facturas</button>
+</div>
+{%endblock%}
+
+{%block scripts%}
+<script src="{% static 'js/anime.min.js' %}"></script>
+<script src="{% static 'js/animations.js' %}"></script>
+{%endblock%}

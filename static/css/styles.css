@@ -19,12 +19,11 @@ body{
 }
 
 .element1{
-    display: flex;
     flex-direction: column;
     text-align: center;
     width: 25%;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.7);  
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .element1>.image{
@@ -46,7 +45,68 @@ body{
 }
 
 .element2{
-    background-color: blueviolet;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
     height: 100%;
     width: 100%;
+}
+.element2_1{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 10%;
+    width: 100%;
+}
+
+.element2_1>h1{
+    color: white;
+    padding-top: 10px;
+    font-weight: 500;
+    font-style: oblique;
+}
+
+.element2_1>h1>a{
+    text-decoration: none;
+    color: white;
+}
+
+.element2_1>h1>a:hover{
+    color: #007bff;
+}
+
+.element2_2{
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.element2>.element2_2>.circle{
+    font-family: 'Russo One', sans-serif;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: aqua;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.element2>.element2_2>.set{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.element2>.element2_2>.set>i{
+    font-size: 40px;
+}
+
+.element2>.element2_2>.set>button{
+    margin: 10px;
 }

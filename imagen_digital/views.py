@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect
-from django.views.generic import TemplateView
-from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.contrib.auth.models import User
 
 def login_view(request):
     """Login view."""
@@ -23,8 +25,7 @@ def login_view(request):
 def HelloWorld(request):
     return HttpResponse('Hola mundo')
 
-@method_decorator(login_required, name='dispatch')
-class Home_view(TemplateView):
+class Home_view(LoginRequiredMixin,TemplateView):
     """Home view."""
     template_name = 'imagen_digital/home.html'
 
@@ -33,3 +34,10 @@ def logout_view(request):
     """Logout a user"""
     logout(request)
     return redirect('login')
+
+class UserDetailView(LoginRequiredMixin,DetailView):
+    """User Detail View"""
+    template_name = "imagen_digital/detail.html"
+    slug_field = "username"
+    slug_url_kwarg = "username"
+    queryset = User.objects.all()
