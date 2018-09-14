@@ -9,9 +9,3 @@ anime({
     rotate: '1turn',
     duration: 2000,
 });
-
-anime({
-    targets: 'i#check',
-    rotate: '1turn',
-    duration: 2000,
-});

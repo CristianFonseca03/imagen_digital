@@ -1,89 +1,79 @@
-*{
-    font-family: "Exo 2","Helvetica Neue",Tahoma,Arial,"Hiragino Kaku Gothic ProN",Meiryo,"Microsoft YaHei","Apple SD Gothic Neo",sans-serif;
-}
+/* -------------------------------------------------- NAVBAR -------------------------------------------------- */
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
 
-body{
+ body {
+    overflow-x: hidden;
     background-image: url("../img/background.png");
     background-repeat: repeat;
-}
+  }
 
-.contenedor{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;  
-    height: 700px;
-    width: 100%;
-}
-.element{
-    display: flex;
-}
+  #wrapper {
+    padding-left: 0;
+    transition: all 0.5s ease;
+  }
 
-.element1{
-    flex-direction: column;
-    text-align: center;
-    width: 25%;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.7);
-}
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
 
-.element1>.image{
-    margin: 20px;
-}
-
-.element1>.buttons{
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-}
-
-.element1>.buttons>a{
-    margin: 5px;
-}
-
-.element1>h3{
-    color: white;
-}
-
-.element2{
-    flex-direction: column;
-    align-content: center;
-    text-align: center;
+  #sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
     height: 100%;
-    width: 100%;
-}
-.element2_1{
-    display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    height: 10%;
-    width: 100%;
-}
+    margin-left: -250px;
+    overflow-y: auto;
+    transition: all 0.5s ease;
+    overflow-x:hidden;
+  }
 
-.element2_1>h1{
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+
+  #page-content-wrapper {
+    width: 100%;
+    position: absolute;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+  }
+
+
+  /* Sidebar Styles */
+
+  .sidebar-nav {
+    position: absolute;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .username>h1{
     color: white;
-    padding-top: 10px;
     font-weight: 500;
     font-style: oblique;
-}
-
-.element2_1>h1>a{
-    text-decoration: none;
+  }
+  /* -------------------------------------------------- NAVBAR -------------------------------------------------- */
+  /* -------------------------------------------------- CONTENT -------------------------------------------------- */
+  .top{
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .top>.top-text>h1{
     color: white;
-}
+    font-weight: 500;
+    font-style: oblique;
+  }
 
-.element2_1>h1>a:hover{
-    color: #007bff;
-}
-
-.element2_2{
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    margin-top: 100px;
-}
-
-.element2>.element2_2>.circle{
+  .circle{
     font-family: 'Russo One', sans-serif;
     height: 80px;
     width: 80px;
@@ -96,17 +86,5 @@ body{
     flex-direction: column;
     font-size: 40px;
     margin-bottom: 20px;
-}
-.element2>.element2_2>.set{
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-}
-
-.element2>.element2_2>.set>i{
-    font-size: 40px;
-}
-
-.element2>.element2_2>.set>button{
-    margin: 10px;
-}
+  }
+  /* -------------------------------------------------- CONTENT -------------------------------------------------- */

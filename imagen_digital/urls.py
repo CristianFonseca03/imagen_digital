@@ -20,8 +20,8 @@ from  imagen_digital.views import Home_view, UserDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Home_view.as_view(), name='home'),
     path('login/', views.login_view, name='login'),
+    path('', Home_view.as_view(), name='home'),
     path('hello/', views.HelloWorld, name='hello'),
     path('logout/', views.logout_view, name='logout'),
     path(route='<str:username>/', view=UserDetailView.as_view(), name='detail'),

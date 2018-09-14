@@ -1,37 +1,30 @@
 {% extends "imagen_digital/base_home.html" %}
 {% load static %}
 
-{%block elemt2_1%}
-<a href="{% url 'home'%}">Inicio</a> > {{user.username | title}}
-{%endblock%}
+{% block title %}
+<a href="{% url 'home'%}" class="badge badge-pill badge-primary">Inicio</a> > {{user.username | title}}
+{% endblock %}
 
-{%block elemt2%}
-<div class="element element2_2">
-    <div class="circle">{{ user.first_name|make_list|first | title}}</div>
-    <h1>{{user.first_name | title}} {{user.last_name | title}}</h1>
-    <div class="set">
-        <h4>Es superusuario:</h4>
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="circle mt-5">{{ user.first_name|make_list|first | title}}</div>
+    <h1 class="mt-3 text-center text-capitalize">{{user.first_name}} {{user.last_name}}</h1>
+    <h4>Es superusuario:
         {% if user.is_superuser %}
-        <i class="fas fa-check-square" id="check" style="color: green"></i>
+        <i class="fas fa-check-square text-success"></i>
         {% else %}
-        <i class="fas fa-minus-square" id="check" style="color: red"></i>
+        <i class="fas fa-minus-square text-danger"></i>
         {% endif %}
-
-    </div>
-    <h4>Ultimo ingreso: {{user.last_login|date:'Y-m-d H:i' }}</h4>
-    <div class="set">
+    </h4>
+    <h4 class="text-center">Ultimo ingreso: {{user.last_login|date:'Y-m-d H:i' }}</h4>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
         {% if user.username == request.user.username %}
-        <button type="button" class="btn btn-primary">Modificar</button>
+        <a class="btn btn-primary" href="#" role="button">Modificar</a>
         {% endif %}
         {% if request.user.is_superuser %}
-        <button type="button" class="btn btn-danger">Borrar</button>
+        <a class="btn btn-danger" href="#" role="button">Borrar</a>
         {% endif %}
+        <a class="btn btn-warning" href="#" role="button">Facturas <span class="badge badge-light">1000</span></a>
     </div>
-    <button type="button" class="btn btn-primary">Facturas</button>
 </div>
-{%endblock%}
-
-{%block scripts%}
-<script src="{% static 'js/anime.min.js' %}"></script>
-<script src="{% static 'js/animations.js' %}"></script>
-{%endblock%}
+{% endblock %}

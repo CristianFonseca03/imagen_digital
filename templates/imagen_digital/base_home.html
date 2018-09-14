@@ -1,43 +1,55 @@
 {% extends "imagen_digital/base.html" %}
 {% load static %}
 
-{%block tittle%}<title>Imagen Digital - Home</title>{%endblock%}
-{%block css%}
+{% block head_content %}
+<title>Imagen Digital - Home</title>
+{% endblock %}
+
+{% block css_content %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-{%endblock%}
-{%block content%}
-<body>
-<div class="contenedor">
-    <div class="element element1">
-        <div class="image">
-            <img src="{% static 'img/instagram.png' %}">
-        </div>
-        <h3>{{request.user.username|title }}</h3>
-        <div class="buttons">
-            <a href="{% url 'detail' request.user.username %}">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Perfil</button>
-            </a>
-            <a href="{% url 'logout'%}">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Cerrar cesión</button>
-            </a>
+{% endblock %}
+
+{% block container %}
+<div id="wrapper" class="toggled">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <div class="sidebar-nav d-flex flex-column align-items-center justify-content-between">
+            <div class="mt-5">
+                <img src="{% static 'img/instagram.png' %}">
+            </div>
+            <div class="username text-center">
+                <h1>{{request.user.username|title }}</h1>
+            </div>
+            <div class="btn-group mb-5">
+                <a class="btn btn-primary" href="{% url 'detail' request.user.username %}" role="button">Perfil</a>
+                <a class="btn btn-danger" href="{% url 'logout'%}" role="button">Cerrar cesión</a>
+            </div>
         </div>
     </div>
-    <div class="element element2">
-        <div class="element element2_1">
-            <h1>{%block elemt2_1%}{%endblock%}</h1>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="col top d-flex align-items-center justify-content-center">
+            <a href="#menu-toggle" class="btn btn-outline-warning" id="menu-toggle">
+                <i id="button-menu" class="fas fa-angle-double-left"></i>
+            </a>
+            <div class="col top-text">
+                <h1 class="text-capitalize text-center">{% block title %}{% endblock %}</h1>
+            </div>
         </div>
-        {%block elemt2%}{%endblock%}
+        <div class="container-fluid">
+            <div class="m-4">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
+    <!-- /#page-content-wrapper -->
+
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-{%block scripts%}{%endblock%}
-</body>
-{%endblock%}
+{% endblock%}
+{% block js %}
+<script src="{% static 'js/prefix.js' %}"></script>
+<script src="{% static 'js/anime.min.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+<script src="{% static 'js/animations.js' %}"></script>
+{% endblock%}
