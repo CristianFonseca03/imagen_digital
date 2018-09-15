@@ -9,3 +9,17 @@ $("#menu-toggle").click(function (e) {
         $("#button-menu").removeClass("fa-angle-double-left");
     }
 });
+$(window).resize(function () {
+    var i = $(window).width()
+    if (i < 768) {
+        $("#wrapper").removeClass("toggled");
+    } if (i > 768) {
+        $("#wrapper").addClass("toggled");
+    }
+});
+$(document).ready(function () {
+    var i = $(window).width()
+    if (i > 768) {
+        $("#wrapper").addClass("toggled");
+    }
+});

@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block title %}
-<a href="{% url 'home'%}" class="badge badge-pill badge-primary">Inicio</a> > {{user.username | title}}
+<h3><a href="{% url 'home'%}" class="badge badge-pill badge-primary">Inicio</a></h3>
+<h3 class="text-light">&nbsp/&nbsp</h3>
+<h3><a href="#" class="badge badge-pill badge-secondary ">{{user.username | title}}</a></h3>
 {% endblock %}
 
 {% block content %}
 <div class="d-flex flex-column justify-content-center align-items-center">
-    <div class="circle mt-5">{{ user.first_name|make_list|first | title}}</div>
+    <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center">{{ user.first_name|make_list|first | title}}</div>
     <h1 class="mt-3 text-center text-capitalize">{{user.first_name}} {{user.last_name}}</h1>
     <h4>Es superusuario:
         {% if user.is_superuser %}

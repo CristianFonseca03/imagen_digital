@@ -55,22 +55,10 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
   }
-
-  .username>h1{
-    color: white;
-    font-weight: 500;
-    font-style: oblique;
-  }
   /* -------------------------------------------------- NAVBAR -------------------------------------------------- */
   /* -------------------------------------------------- CONTENT -------------------------------------------------- */
   .top{
-    height: 70px;
     background-color: rgba(0, 0, 0, 0.7);
-  }
-  .top>.top-text>h1{
-    color: white;
-    font-weight: 500;
-    font-style: oblique;
   }
 
   .circle{
@@ -79,12 +67,6 @@
     width: 80px;
     border-radius: 50%;
     background-color: aqua;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
     font-size: 40px;
-    margin-bottom: 20px;
   }
   /* -------------------------------------------------- CONTENT -------------------------------------------------- */

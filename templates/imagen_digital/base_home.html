@@ -7,17 +7,18 @@
 
 {% block css_content %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/text.css' %}">
 {% endblock %}
 
 {% block container %}
-<div id="wrapper" class="toggled">
+<div id="wrapper">
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
+    <div id="sidebar-wrapper" class="d-none d-md-block">
         <div class="sidebar-nav d-flex flex-column align-items-center justify-content-between">
             <div class="mt-5">
                 <img src="{% static 'img/instagram.png' %}">
             </div>
-            <div class="username text-center">
+            <div class="font-italic text-white text-center text-capitalize">
                 <h1>{{request.user.username|title }}</h1>
             </div>
             <div class="btn-group mb-5">
@@ -29,12 +30,12 @@
     <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <div class="col top d-flex align-items-center justify-content-center">
-            <a href="#menu-toggle" class="btn btn-outline-warning" id="menu-toggle">
+        <div class="col top d-flex align-items-center justify-content-center ">
+            <a href="#menu-toggle" class="btn btn-outline-warning d-none d-md-block" id="menu-toggle">
                 <i id="button-menu" class="fas fa-angle-double-left"></i>
             </a>
-            <div class="col top-text">
-                <h1 class="text-capitalize text-center">{% block title %}{% endblock %}</h1>
+            <div class="col m-3 d-flex flex-row justify-content-center align-items-center text-center">
+               {% block title %}{% endblock %}
             </div>
         </div>
         <div class="container-fluid">
