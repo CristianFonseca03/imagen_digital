@@ -2,25 +2,32 @@
 {% load static %}
 
 {% block title %}
-<h3><a href="{% url 'home'%}" class="badge badge-pill badge-primary">Inicio</a></h3>
-<h3 class="text-light">&nbsp/&nbsp</h3>
-<h3><a href="#" class="badge badge-pill badge-secondary ">{{user.username | title}}</a></h3>
+<h3><a href="{% url 'home'%}" class="badge badge-pill badge-primary d-none d-md-block">Inicio</a></h3>
+<h3 class="text-light d-none d-md-block">&nbsp/&nbsp</h3>
+<h3><a href="#" class="badge badge-pill badge-secondary d-none d-md-block">{{user.username|title}}</a></h3>
+{% endblock %}
+{% block title-2 %}
+<h1><a href="{% url 'home'%}" class="badge badge-pill badge-primary d-md-none">Inicio</a></h1>
+<h1 class="text-light d-md-none">&nbsp/&nbsp</h1>
+<h1><a href="#" class="badge badge-pill badge-secondary d-md-none">{{user.username|title}}</a></h1>
 {% endblock %}
 
 {% block content %}
 <div class="d-flex flex-column justify-content-center align-items-center">
-    <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center">{{ user.first_name|make_list|first | title}}</div>
-    <h1 class="mt-3 text-center text-capitalize">{{user.first_name}} {{user.last_name}}</h1>
-    <h4>Es superusuario:
+    <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light" id="color-3">{{user.first_name|make_list|first | title}}
+    </div>
+    <h1 class="mt-3 text-center text-capitalize font-italic">{{user.first_name}} {{user.last_name}}</h1>
+    <h4 class="pt-2">Es superusuario:
         {% if user.is_superuser %}
         <i class="fas fa-check-square text-success"></i>
         {% else %}
         <i class="fas fa-minus-square text-danger"></i>
         {% endif %}
     </h4>
-    <h4 class="text-center">Ultimo ingreso: {{user.last_login|date:'Y-m-d H:i' }}</h4>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        {% if user.username == request.user.username %}
+    <h4 class="text-center pt-3">Username: {{user.username}}</h4>
+    <h4 class="text-center pt-3">Ultimo ingreso: {{user.last_login|date:'Y-m-d H:i' }}</h4>
+    <div class="btn-group btn-group-toggle pt-3" data-toggle="buttons">
+        {% if user.username == request.user.username or request.user.is_superuser%}
         <a class="btn btn-primary" href="#" role="button">Modificar</a>
         {% endif %}
         {% if request.user.is_superuser %}

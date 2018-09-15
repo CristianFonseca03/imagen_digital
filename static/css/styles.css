@@ -66,7 +66,26 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    background-color: aqua;
     font-size: 40px;
   }
+
+  .avatar-img{
+    font-family: 'Russo One', sans-serif;
+    height: 40px;
+    width: 40px;
+    border-radius: 25%;
+    font-size: 25px;
+  }
+
+  .nounderline{
+    text-decoration: none !important
+  }
   /* -------------------------------------------------- CONTENT -------------------------------------------------- */
+  /* -------------------------------------------------- COLORS -------------------------------------------------- */
+  .bg-purple{
+    background-color:  #7d3c98;
+  }
+  .bg-pink{
+    background-color:  #fa2a83;
+  }
+  /* -------------------------------------------------- COLORS -------------------------------------------------- */

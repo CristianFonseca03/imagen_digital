@@ -15,13 +15,14 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper" class="d-none d-md-block">
         <div class="sidebar-nav d-flex flex-column align-items-center justify-content-between">
-            <div class="mt-5">
-                <img src="{% static 'img/instagram.png' %}">
+            <div class="mt-2 d-flex flex-column justify-content-center align-items-center">
+                <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light"
+                     id="color-1"><i class="fas fa-camera-retro"></i>
+                </div>
+                <h3 class="text-light">Imagen Digital</h3>
             </div>
-            <div class="font-italic text-white text-center text-capitalize">
-                <h1>{{request.user.username|title }}</h1>
-            </div>
-            <div class="btn-group mb-5">
+            <h3 class="font-italic text-white text-center text-capitalize m-1">{{user.first_name}} {{user.last_name}}</h3>
+            <div class="btn-group mb-2">
                 <a class="btn btn-primary" href="{% url 'detail' request.user.username %}" role="button">Perfil</a>
                 <a class="btn btn-danger" href="{% url 'logout'%}" role="button">Cerrar cesión</a>
             </div>
@@ -34,9 +35,34 @@
             <a href="#menu-toggle" class="btn btn-outline-warning d-none d-md-block" id="menu-toggle">
                 <i id="button-menu" class="fas fa-angle-double-left"></i>
             </a>
-            <div class="col m-3 d-flex flex-row justify-content-center align-items-center text-center">
-               {% block title %}{% endblock %}
+            <div class="col m-3 pt-2 d-flex flex-row justify-content-center align-items-center text-center font-italic text-capitalize">
+                {% block title %}{% endblock %}
+                {% block title-2 %}{% endblock %}
             </div>
+            <a class="btn btn-outline-warning d-md-none" data-toggle="collapse" href="#collapseMenu" role="button"
+               aria-expanded="false" aria-controls="collapseMenu" id="menuDropdown">
+                <i id="button-dropdown" class="fas fa-angle-double-down"></i>
+            </a>
+        </div>
+        <div class="collapse d-md-none" id="collapseMenu">
+            <a href="{% url 'detail' request.user.username %}" class="nounderline">
+                <div class="bg-dark p-2 pl-3 d-flex flex-row align-items-center">
+                    <div class="avatar-img d-flex justify-content-center flex-column text-center text-light"
+                         id="color-2">{{ request.user.username|make_list|first | title}}
+                    </div>
+                    <h3 class="font-italic ml-3 mt-2 text-white text-center text-capitalize">{{request.user.username|title }}</h3>
+                </div>
+            </a>
+            <a href="#" class="nounderline">
+                <div class="pl-3 bg-secondary">
+                    <div class="p-2 pl-5 d-flex flex-row align-items-center">
+                        <div class="avatar-img d-flex justify-content-center flex-column text-center text-light bg-danger">
+                            <i
+                                    class="fas fa-arrow-alt-circle-left"></i></div>
+                        <h3 class="font-italic ml-3 mt-2 text-white text-center text-capitalize">Cerrar cesión</h3>
+                    </div>
+                </div>
+            </a>
         </div>
         <div class="container-fluid">
             <div class="m-4">
