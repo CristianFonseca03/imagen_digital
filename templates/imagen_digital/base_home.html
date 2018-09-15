@@ -53,7 +53,7 @@
                     <h3 class="font-italic ml-3 mt-2 text-white text-center text-capitalize">{{request.user.username|title }}</h3>
                 </div>
             </a>
-            <a href="#" class="nounderline">
+            <a href="{% url 'logout'%}" class="nounderline">
                 <div class="pl-3 bg-secondary">
                     <div class="p-2 pl-5 d-flex flex-row align-items-center">
                         <div class="avatar-img d-flex justify-content-center flex-column text-center text-light bg-danger">
