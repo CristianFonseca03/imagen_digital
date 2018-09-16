@@ -1,4 +1,4 @@
-{% extends "imagen_digital/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block head_content %}
 <title>Imagen Digital - Login</title>
@@ -22,7 +22,7 @@
             {% if error %}
             <p class="alert alert-danger mb-4">{{ error }}</p>
             {% endif%}
-            <form method="POST" action="{% url 'login' %}">
+            <form method="POST" action="{% url 'user:login' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <input class="form-control " type="text" placeholder="Usuario" name="username"/>

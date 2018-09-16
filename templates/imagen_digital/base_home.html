@@ -1,4 +1,4 @@
-{% extends "imagen_digital/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block head_content %}
@@ -23,8 +23,8 @@
             </div>
             <h3 class="font-italic text-white text-center text-capitalize m-1">{{user.get_full_name}}</h3>
             <div class="btn-group mb-2">
-                <a class="btn btn-primary" href="{% url 'detail' request.user.username %}" role="button">Perfil</a>
-                <a class="btn btn-danger" href="{% url 'logout'%}" role="button">Cerrar cesión</a>
+                <a class="btn btn-primary" href="{% url 'user:detail' request.user.username %}" role="button">Perfil</a>
+                <a class="btn btn-danger" href="{% url 'user:logout'%}" role="button">Cerrar cesión</a>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
             </a>
         </div>
         <div class="collapse d-md-none" id="collapseMenu">
-            <a href="{% url 'detail' request.user.username %}" class="nounderline">
+            <a href="{% url 'user:detail' request.user.username %}" class="nounderline">
                 <div class="bg-dark p-2 pl-3 d-flex flex-row align-items-center">
                     <div class="avatar-img d-flex justify-content-center flex-column text-center text-light"
                          id="color-2">{{ request.user.username|make_list|first | title}}
@@ -53,7 +53,7 @@
                     <h3 class="font-italic ml-3 mt-2 text-white text-center text-capitalize">{{request.user.username|title }}</h3>
                 </div>
             </a>
-            <a href="{% url 'logout'%}" class="nounderline">
+            <a href="{% url 'user:logout'%}" class="nounderline">
                 <div class="pl-3 bg-secondary">
                     <div class="p-2 pl-5 d-flex flex-row align-items-center">
                         <div class="avatar-img d-flex justify-content-center flex-column text-center text-light bg-danger">
