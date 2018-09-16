@@ -6,7 +6,8 @@ from django.shortcuts import render,redirect
 from django.views.generic import TemplateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 def login_view(request):
     """Login view."""

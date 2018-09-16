@@ -16,7 +16,7 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
     <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light" id="color-3">{{user.first_name|make_list|first | title}}
     </div>
-    <h1 class="mt-3 text-center text-capitalize font-italic">{{user.first_name}} {{user.last_name}}</h1>
+    <h1 class="mt-3 text-center text-capitalize font-italic">{{user.get_full_name}}</h1>
     <h4 class="pt-2">Es superusuario:
         {% if user.is_superuser %}
         <i class="fas fa-check-square text-success"></i>
@@ -33,7 +33,7 @@
         {% if request.user.is_superuser %}
         <a class="btn btn-danger" href="#" role="button">Borrar</a>
         {% endif %}
-        <a class="btn btn-warning" href="#" role="button">Facturas <span class="badge badge-light">1000</span></a>
+        <a class="btn btn-warning" href="#" role="button">Facturas <span class="badge badge-light">{{user.number_invoices}}</span></a>
     </div>
 </div>
 {% endblock %}
