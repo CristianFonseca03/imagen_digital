@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView,TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
@@ -32,3 +32,7 @@ class UserDetailView(LoginRequiredMixin,DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
     queryset = User.objects.all()
+
+class Home_view(LoginRequiredMixin,TemplateView):
+    """Home view from users module."""
+    template_name = 'users/home.html'

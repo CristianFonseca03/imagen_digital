@@ -75,6 +75,18 @@
     font-size: 40px;
   }
 
+  .circle-module{
+    font-family: 'Russo One', sans-serif;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+  }
+  .cont-log-module{
+    height: 100px;
+    width: 100px;
+  }
+
   .avatar-img{
     font-family: 'Russo One', sans-serif;
     height: 40px;
@@ -86,6 +98,11 @@
   .nounderline{
     text-decoration: none !important
   }
+
+  .module-panel{
+    border-radius: 30px;
+  }
+
   /* -------------------------------------------------- CONTENT -------------------------------------------------- */
   /* -------------------------------------------------- COLORS -------------------------------------------------- */
   .bg-purple{

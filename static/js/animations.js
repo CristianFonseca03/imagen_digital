@@ -9,3 +9,9 @@ anime({
     rotate: '1turn',
     duration: 2000,
 });
+anime({
+    targets: 'div.circle-module',
+    rotate: '1turn',
+    scale: 1.9,
+    duration: 2000,
+});

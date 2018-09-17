@@ -39,9 +39,4 @@ $(document).ready(function () {
     $("#color-1").addClass(colors[randomNumber(0,5)]);
     $("#color-2").addClass(colors[randomNumber(0,5)]);
     $("#color-3").addClass(colors[randomNumber(0,5)]);
-    var i = $(window).width()
-    if (i > 768) {
-        $("#wrapper").addClass("toggled");
-    }
-
 });

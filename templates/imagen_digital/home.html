@@ -2,13 +2,45 @@
 {% load static %}
 
 {% block title %}
-<h3><a href="#" class="badge badge-pill badge-primary d-none d-md-block">Inicio</a></h3>
+<h3><a href="#" class="badge badge-pill badge-secondary d-none d-md-block">Inicio</a></h3>
 {% endblock %}
 
 {% block title-2 %}
-<h1><a href="#" class="badge badge-pill badge-primary d-md-none">Inicio</a></h1>
+<h1><a href="#" class="badge badge-pill badge-secondary d-md-none">Inicio</a></h1>
 {% endblock %}
 
 {% block content %}
-<h1>Hola Mundo</h1>
+<div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-around">
+    <!-- Modulo de usuarios -->
+    <a href="{% url 'user:home'%}" class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start"
+       id="module-link">
+        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
+            <div class="circle-module p-2 bg-primary m-1 d-flex justify-content-center flex-column text-center">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Usuarios</h1>
+            <h3 class="d-md-none">Crear, modificar y eliminar usuarios</h3>
+            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Usuarios</h2>
+            <h4 class="d-none d-md-block">Crear, modificar y eliminar usuarios</h4>
+        </div>
+    </a>
+    <!-- Modulo de usuarios -->
+    <!-- Modulo de Facturas -->
+    <a href="" class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
+        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
+            <div class="circle-module p-2 bg-danger m-1 d-flex justify-content-center flex-column text-center">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Facturas</h1>
+            <h3 class="d-md-none">Crear, modificar y eliminar facturas</h3>
+            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Facturas</h2>
+            <h4 class="d-none d-md-block">Crear, modificar y eliminar facturas</h4>
+        </div>
+    </a>
+    <!-- Modulo de Facturas -->
+</div>
 {% endblock %}

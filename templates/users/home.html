@@ -1,0 +1,90 @@
+{% extends "imagen_digital/base_home.html" %}
+{% load static %}
+
+{% block title %}
+<h3><a href="{% url 'home'%}" class="badge badge-pill badge-primary d-none d-md-block">Inicio</a></h3>
+<h3 class="text-light d-none d-md-block">&nbsp/&nbsp</h3>
+<h3><a href="#" class="badge badge-pill badge-secondary d-none d-md-block">Usuarios</a></h3>
+{% endblock %}
+{% block title-2 %}
+<h1><a href="{% url 'home'%}" class="badge badge-pill badge-primary d-md-none">Inicio</a></h1>
+<h1 class="text-light d-md-none">&nbsp/&nbsp</h1>
+<h1><a href="#" class="badge badge-pill badge-secondary d-md-none">Usuarios</a></h1>
+{% endblock %}
+
+{% block content %}
+<!-- Row 1 -->
+<div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-around">
+    <!-- Modulo de crear usuarios -->
+    <a href=""
+       class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
+        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
+            <div class="circle-module p-2 bg-primary m-1 d-flex justify-content-center flex-column text-center">
+                <i class="fas fa-user-plus"></i>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Crear</h1>
+            <h3 class="d-md-none">Crear un usuario</h3>
+            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Crear</h2>
+            <h4 class="d-none d-md-block">Crear un usuario</h4>
+        </div>
+    </a>
+    <!-- Modulo de crear usuarios -->
+    <!-- Modulo de eliminar usuarios -->
+    <a href=""
+       class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start"
+       id="module-link">
+        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
+            <div class="circle-module p-2 bg-danger m-1 d-flex justify-content-center flex-column text-center">
+                <i class="fas fa-user-minus"></i>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Eliminar</h1>
+            <h3 class="d-md-none">Eliminar un usuario</h3>
+            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Eliminar</h2>
+            <h4 class="d-none d-md-block">Eliminar un usuario</h4>
+        </div>
+    </a>
+    <!-- eliminar usuarios -->
+</div>
+<!-- Row 1 -->
+<!-- Row 2 -->
+<div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-around">
+    <!-- Modulo de ver usuarios -->
+    <a href=""
+       class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
+        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
+            <div class="circle-module p-2 bg-warning m-1 d-flex justify-content-center flex-column text-center">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Usuarios creados</h1>
+            <h3 class="d-md-none">Ver todos los usuarios</h3>
+            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Usuarios
+                creados</h2>
+            <h4 class="d-none d-md-block">Ver todos los usuarios</h4>
+        </div>
+    </a>
+    <!-- Modulo de ver usuarios -->
+    <!-- Modulo de modificar usuarios -->
+    <a href=""
+       class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
+        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
+            <div class="circle-module p-2 bg-purple m-1 d-flex justify-content-center flex-column text-center">
+                <i class="fas fa-user-edit"></i>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Modificar</h1>
+            <h3 class="d-md-none">Modificar un usuario</h3>
+            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Modificar</h2>
+            <h4 class="d-none d-md-block">Modificar un usuario</h4>
+        </div>
+    </a>
+    <!-- modificar usuarios -->
+</div>
+<!-- Row 2 -->
+{% endblock %}
