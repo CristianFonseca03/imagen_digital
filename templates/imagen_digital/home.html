@@ -11,6 +11,7 @@
 
 {% block content %}
 <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-around">
+    {% if request.user.is_superuser %}
     <!-- Modulo de usuarios -->
     <a href="{% url 'user:home'%}" class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start"
        id="module-link">
@@ -27,6 +28,7 @@
         </div>
     </a>
     <!-- Modulo de usuarios -->
+    {% endif %}
     <!-- Modulo de Facturas -->
     <a href="" class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
         <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">

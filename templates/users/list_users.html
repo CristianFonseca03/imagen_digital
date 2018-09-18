@@ -1,0 +1,49 @@
+{% extends "imagen_digital/base_home.html" %}
+{% load static %}
+
+{% block title %}
+<h3><a href="{% url 'users:home'%}" class="badge badge-pill badge-primary d-none d-md-block">Usuarios</a></h3>
+<h3 class="text-light d-none d-md-block">&nbsp/&nbsp</h3>
+<h3><a href="#" class="badge badge-pill badge-secondary d-none d-md-block">Registrados</a></h3>
+{% endblock %}
+{% block title-2 %}
+<h1><a href="{% url 'users:home'%}" class="badge badge-pill badge-primary d-md-none">Usuarios</a></h1>
+<h1 class="text-light d-md-none">&nbsp/&nbsp</h1>
+<h1><a href="#" class="badge badge-pill badge-secondary d-md-none">Registrados</a></h1>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">S.U</th>
+        <th scope="col">Nombres</th>
+        <th scope="col" class="d-none d-md-table-cell">Apellidos</th>
+        <th scope="col">Perfil</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr class="dark-mf text-light font-italic text-capitalize font-weight-bold">
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{user.username}}</td>
+        <td>
+            {% if user.is_superuser %}
+            <h2><i class="fas fa-check-square text-success"></i></h2>
+            {% else %}
+            <h2><i class="fas fa-minus-square text-danger"></i></h2>
+            {% endif %}
+        </td>
+        <td>{{user.first_name}}</td>
+        <td class="d-none d-md-table-cell">{{user.last_name}}</td>
+        <td><a href="{% url 'user:detail' user.username %}" class="btn btn-outline-warning">
+            <i class="fas fa-user"></i>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

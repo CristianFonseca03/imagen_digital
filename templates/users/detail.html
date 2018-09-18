@@ -30,7 +30,7 @@
         {% if user.username == request.user.username or request.user.is_superuser%}
         <a class="btn btn-primary" href="#" role="button">Modificar</a>
         {% endif %}
-        {% if request.user.is_superuser %}
+        {% if request.user.is_superuser and user.username != request.user.username%}
         <a class="btn btn-danger" href="#" role="button">Borrar</a>
         {% endif %}
         <a class="btn btn-warning" href="#" role="button">Facturas <span class="badge badge-light">{{user.number_invoices}}</span></a>

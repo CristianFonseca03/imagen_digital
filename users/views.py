@@ -1,11 +1,12 @@
+#Django classes
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect
-from django.views.generic import DetailView,TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView,TemplateView,ListView
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth import get_user_model
 User = get_user_model()
+
 
 def login_view(request):
     """Login view."""
@@ -36,3 +37,10 @@ class UserDetailView(LoginRequiredMixin,DetailView):
 class Home_view(LoginRequiredMixin,TemplateView):
     """Home view from users module."""
     template_name = 'users/home.html'
+
+class UsersListView(PermissionRequiredMixin,ListView):
+    """List view from all users."""
+    permission_required = ('user.is_authenticated','user.is_superuser')
+    model = User
+    context_object_name = 'users'
+    template_name = 'users/list_users.html'
