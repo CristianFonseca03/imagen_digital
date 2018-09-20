@@ -34,8 +34,9 @@ class UserDetailView(LoginRequiredMixin,DetailView):
     slug_url_kwarg = "username"
     queryset = User.objects.all()
 
-class Home_view(LoginRequiredMixin,TemplateView):
+class Home_view(PermissionRequiredMixin,TemplateView):
     """Home view from users module."""
+    permission_required = ('user.is_authenticated', 'user.is_superuser')
     template_name = 'users/home.html'
 
 class UsersListView(PermissionRequiredMixin,ListView):

@@ -15,3 +15,12 @@ anime({
     scale: 1.9,
     duration: 2000,
 });
+anime({
+    targets: 'div.error-img',
+    translateX: [120,-120],
+    rotate: '1turn',
+    easing: 'easeInOutQuart',
+    direction: 'alternate',
+    duration: 15000,
+    loop: true,
+});
