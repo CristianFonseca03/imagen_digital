@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_content %}
+<title>ERROR 404</title>
+{% endblock %}
+
+{% block css_content %}
+<link rel="stylesheet" href="{% static 'css/error-styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/text.css' %}">
+{% endblock %}
+
+{% block container %}
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="error-img">
+        <img class="img-fluid" src="{% static 'img/error-img.png' %}" alt="img-error">
+    </div>
+    <h1 class="font-weight-bold"><span class="badge badge-danger">ERROR 404</span></h1>
+    <h1><span class="badge badge-info">Pagina no encontrada</span></h1>
+    <a href="{% url 'home'%}" class="btn btn-success btn-lg text-light font-weight-bold">INICIO</a>
+</div>
+{% endblock%}
+
+{% block js %}
+<script src="{% static 'js/prefix.js' %}"></script>
+<script src="{% static 'js/anime.min.js' %}"></script>
+<script src="{% static 'js/animations.js' %}"></script>
+{% endblock%}
