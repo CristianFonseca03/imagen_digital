@@ -4,12 +4,16 @@ from django.shortcuts import render,redirect
 from django.views.generic import DetailView,TemplateView,ListView
 from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
+
+#Models
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
 def login_view(request):
     """Login view."""
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -34,7 +38,7 @@ class UserDetailView(LoginRequiredMixin,DetailView):
     slug_url_kwarg = "username"
     queryset = User.objects.all()
 
-class Home_view(PermissionRequiredMixin,TemplateView):
+class HomeView(PermissionRequiredMixin,TemplateView):
     """Home view from users module."""
     permission_required = ('user.is_authenticated', 'user.is_superuser')
     template_name = 'users/home.html'
