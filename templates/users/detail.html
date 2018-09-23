@@ -14,7 +14,6 @@
 
 {% block content %}
 {% if messages %}
-<ul class="messages">
     {% for message in messages %}
     <div class="alert alert-success" role="alert">
         {{ message }}
@@ -23,7 +22,6 @@
         </button>
     </div>
     {% endfor %}
-</ul>
 {% endif %}
 <div class="d-flex flex-column justify-content-center align-items-center">
     <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light" id="color-3">
