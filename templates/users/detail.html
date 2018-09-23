@@ -13,8 +13,21 @@
 {% endblock %}
 
 {% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
 <div class="d-flex flex-column justify-content-center align-items-center">
-    <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light" id="color-3">{{user.first_name|make_list|first | title}}
+    <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light" id="color-3">
+        {{user.first_name|make_list|first | title}}
     </div>
     <h1 class="mt-3 text-center text-capitalize font-italic">{{user.get_full_name}}</h1>
     <h4 class="pt-2">Es superusuario:

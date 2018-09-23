@@ -1,13 +1,18 @@
-#Django classes
+# Django classes
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render,redirect
-from django.views.generic import DetailView,TemplateView,ListView
-from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.views.generic import DetailView, TemplateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib import messages
 
-#Models
+# Models
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
+
+# Forms
+from users.forms import SignupForm
 
 
 def login_view(request):
@@ -22,8 +27,26 @@ def login_view(request):
             login(request, user)
             return redirect('home')
         else:
-            return render(request,'users/login.html',{'error':'Usuario o contraseña invalidos'})
+            return render(request, 'users/login.html', {'error': 'Usuario o contraseña invalidos'})
     return render(request, 'users/login.html')
+
+@permission_required(('user.is_authenticated','user.is_superuser'))
+def signup_view(request):
+    """Sign up view"""
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = User.objects.last()
+            messages.success(request, 'El perfil de '+user.username+' fue creado con exito')
+            return redirect('user:detail', username=user.username )
+    else:
+        form = SignupForm()
+    return render(
+        request=request,
+        template_name='users/signup.html',
+        context={'form':form}
+    )
 
 @login_required
 def logout_view(request):
@@ -31,21 +54,24 @@ def logout_view(request):
     logout(request)
     return redirect('user:login')
 
-class UserDetailView(LoginRequiredMixin,DetailView):
+
+class UserDetailView(LoginRequiredMixin, DetailView):
     """User Detail View"""
     template_name = "users/detail.html"
     slug_field = "username"
     slug_url_kwarg = "username"
     queryset = User.objects.all()
 
-class HomeView(PermissionRequiredMixin,TemplateView):
+
+class HomeView(PermissionRequiredMixin, TemplateView):
     """Home view from users module."""
     permission_required = ('user.is_authenticated', 'user.is_superuser')
     template_name = 'users/home.html'
 
-class UsersListView(PermissionRequiredMixin,ListView):
+
+class UsersListView(PermissionRequiredMixin, ListView):
     """List view from all users."""
-    permission_required = ('user.is_authenticated','user.is_superuser')
+    permission_required = ('user.is_authenticated', 'user.is_superuser')
     model = User
     context_object_name = 'users'
     template_name = 'users/list_users.html'

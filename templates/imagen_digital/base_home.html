@@ -21,7 +21,7 @@
                 </div>
                 <h3 class="text-light">Imagen Digital</h3>
             </div>
-            <h3 class="font-italic text-white text-center text-capitalize m-1">{{user.get_full_name}}</h3>
+            <h3 class="font-italic text-white text-center text-capitalize m-1">{{request.user.get_full_name}}</h3>
             <div class="btn-group mb-2">
                 <a class="btn btn-primary" href="{% url 'user:detail' request.user.username %}" role="button">Perfil</a>
                 <a class="btn btn-danger" href="{% url 'user:logout'%}" role="button">Cerrar cesión</a>
