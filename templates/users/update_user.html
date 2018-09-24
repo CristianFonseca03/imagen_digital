@@ -45,15 +45,13 @@
         </div>
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
-        {% if request.user.is_superuser and user.username != request.user.username%}
-        <span class="border bg-warning rounded">
+        <span class="border bg-warning rounded {% if request.user.is_superuser and user.username == request.user.username%}d-none{% endif %}">
             <div class="custom-control custom-checkbox m-2">
                 <input type="checkbox" class="custom-control-input" id="is_superuser_edit" name="is_superuser"
                 {% if user.is_superuser %}checked{% endif %}>
                 <label class="custom-control-label" for="is_superuser_edit">Es superusuario</label>
             </div>
         </span>
-        {% endif %}
         <button class="btn btn-primary mt-3" type="submit">Editar</button>
     </div>
 </form>
