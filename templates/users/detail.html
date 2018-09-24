@@ -12,17 +12,9 @@
 <h1><a href="#" class="badge badge-pill badge-secondary d-md-none">{{user.username|title}}</a></h1>
 {% endblock %}
 
+
 {% block content %}
-{% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-success" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endfor %}
-{% endif %}
+{% include 'message.html' %}
 <div class="d-flex flex-column justify-content-center align-items-center">
     <div class="circle mt-5 mb-5 d-flex justify-content-center flex-column text-center text-light" id="color-3">
         {{user.first_name|make_list|first | title}}
@@ -36,13 +28,13 @@
         {% endif %}
     </h4>
     <h4 class="text-center pt-3">Username: {{user.username}}</h4>
-    <h4 class="text-center pt-3">Ultimo ingreso: {{user.last_login|date:'Y-m-d H:i' }}</h4>
-    <div class="btn-group btn-group-toggle pt-3" data-toggle="buttons">
+    <h4 class="text-center pt-3">Ultimo ingreso:{% if user.last_login == None %} Ninguno {% else %} {{user.last_login|date:'Y-m-d H:i' }}{% endif %}</h4>
+    <div class="btn-group btn-group-toggle pt-3">
         {% if user.username == request.user.username or request.user.is_superuser%}
         <a class="btn btn-primary" href="#" role="button">Modificar</a>
         {% endif %}
         {% if request.user.is_superuser and user.username != request.user.username%}
-        <a class="btn btn-danger" href="#" role="button">Borrar</a>
+        <a class="btn btn-danger" href="{% url 'user:delete' user.username %}">Borrar</a>
         {% endif %}
         <a class="btn btn-warning" href="#" role="button">Facturas <span class="badge badge-light">{{user.number_invoices}}</span></a>
     </div>

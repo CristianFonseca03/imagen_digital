@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<!-- Row 1 -->
+{% include 'message.html' %}
 <div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-around">
     <!-- Modulo de crear usuarios -->
     <a href="{% url 'user:signup' %}"
@@ -24,34 +24,13 @@
             </div>
         </div>
         <div>
-            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Crear</h1>
-            <h3 class="d-md-none">Crear un usuario</h3>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none ml-4">Crear</h1>
+            <h3 class="d-md-none ml-4">Crear un usuario</h3>
             <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Crear</h2>
             <h4 class="d-none d-md-block">Crear un usuario</h4>
         </div>
     </a>
     <!-- Modulo de crear usuarios -->
-    <!-- Modulo de eliminar usuarios -->
-    <a href=""
-       class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start"
-       id="module-link">
-        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
-            <div class="circle-module p-2 bg-danger m-1 d-flex justify-content-center flex-column text-center">
-                <i class="fas fa-user-minus"></i>
-            </div>
-        </div>
-        <div>
-            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Eliminar</h1>
-            <h3 class="d-md-none">Eliminar un usuario</h3>
-            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Eliminar</h2>
-            <h4 class="d-none d-md-block">Eliminar un usuario</h4>
-        </div>
-    </a>
-    <!-- eliminar usuarios -->
-</div>
-<!-- Row 1 -->
-<!-- Row 2 -->
-<div class="d-flex flex-row flex-wrap flex-md-nowrap justify-content-around">
     <!-- Modulo de ver usuarios -->
     <a href="{% url 'user:list-users' %}"
        class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
@@ -61,30 +40,17 @@
             </div>
         </div>
         <div>
-            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Usuarios creados</h1>
-            <h3 class="d-md-none">Ver todos los usuarios</h3>
+            <h1 class="font-italic text-capitalize font-weight-bold d-md-none ml-4">Usuarios creados</h1>
+            <h3 class="d-md-none ml-4">Modificar, ver o eliminar un usuario</h3>
             <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Usuarios
                 creados</h2>
-            <h4 class="d-none d-md-block">Ver todos los usuarios</h4>
+            <h4 class="d-none d-md-block">Modificar, ver o eliminar un usuario</h4>
         </div>
     </a>
     <!-- Modulo de ver usuarios -->
-    <!-- Modulo de modificar usuarios -->
-    <a href=""
-       class="nounderline module-panel col-12 col-md-5 top mt-4 text-light d-flex justify-content-center align-items-center justify-content-md-start">
-        <div class="cont-log-module m-3 d-flex justify-content-center flex-column align-items-center">
-            <div class="circle-module p-2 bg-purple m-1 d-flex justify-content-center flex-column text-center">
-                <i class="fas fa-user-edit"></i>
-            </div>
-        </div>
-        <div>
-            <h1 class="font-italic text-capitalize font-weight-bold d-md-none">Modificar</h1>
-            <h3 class="d-md-none">Modificar un usuario</h3>
-            <h2 class="font-italic text-capitalize font-weight-bold d-none d-md-block">Modificar</h2>
-            <h4 class="d-none d-md-block">Modificar un usuario</h4>
-        </div>
-    </a>
-    <!-- modificar usuarios -->
+</div>
+{% block delete_warning %}
+{% endblock %}
 </div>
 <!-- Row 2 -->
 {% endblock %}
