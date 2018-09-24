@@ -1,0 +1,5 @@
+{% if request.user.username == object.username %}
+<script>
+    location.href = "{% url 'users:home'%}";
+</script>
+{% endif %}

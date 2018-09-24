@@ -1,0 +1,5 @@
+{% if not request.user.is_superuser and request.user.username != user.username %}
+<script>
+    location.href = "{% url 'home'%}";
+</script>
+{% endif %}

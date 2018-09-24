@@ -1,6 +1,6 @@
 from django.urls import path
 from users import views
-from users.views import UserDetailView, HomeView, UsersListView, UserDeleteView
+from users.views import UserDetailView, HomeView, UsersListView, UserDeleteView, UserUpdateView
 
 app_name = 'users'
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path(route='find/<str:username>/', view=UserDetailView.as_view(), name='detail'),
     path(route='list-users/', view=UsersListView.as_view(), name='list-users'),
     path(route='delete/<str:username>/', view=UserDeleteView.as_view(), name='delete'),
+    path(route='update/<str:username>/', view=UserUpdateView.as_view(), name='update'),
 ]

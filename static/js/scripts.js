@@ -55,3 +55,10 @@ $(document).ready(function () {
 $('#createUserModalCancel').on('click', function () {
     $("#is_superuser").prop("checked", false);
 });
+
+//Edit
+$('#is_superuser_edit').on('click', function () {
+    if ($(this).is(':checked')) {
+        $('#updateUserModal').modal('show');
+    }
+});

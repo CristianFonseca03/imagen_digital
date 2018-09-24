@@ -1,0 +1,84 @@
+{% extends "imagen_digital/base_home.html" %}
+{% load static %}
+
+{% block title %}
+{% include 'only_superusers_and_me.html' %}
+<h3><a href="{% url 'user:detail' user.username %}" class="badge badge-pill badge-primary d-none d-md-block">{{user.username}}</a>
+</h3>
+<h3 class="text-light d-none d-md-block">&nbsp/&nbsp</h3>
+<h3><a href="#" class="badge badge-pill badge-secondary d-none d-md-block">Editar</a></h3>
+{% endblock %}
+{% block title-2 %}
+<h1><a href="{% url 'user:detail' user.username %}" class="badge badge-pill badge-primary d-md-none">Usuarios</a></h1>
+<h1 class="text-light d-md-none">&nbsp/&nbsp</h1>
+<h1><a href="#" class="badge badge-pill badge-secondary d-md-none">Editar</a></h1>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-row justify-content-center align-items-center flex-wrap">
+    <div class="circle-module p-2 bg-primary m-5 d-flex justify-content-center flex-column text-center">
+        <i class="fas fa-user-cog text-light"></i>
+    </div>
+    <h1>Editar : {{user.username}}</h1>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6 mb-2">
+            <label for="first_name">Nombres</label>
+            <input type="text" class="form-control" placeholder="Nombres" name="first_name" id="first_name"
+                   required
+                   value="{% if form.errors %}{{form.first_name.value}}{% else %}{{user.first_name}}{% endif %}">
+            <small id="first_nameHelpBlock"
+                   class="form-tex {% if form.first_name.errors %}text-danger{% else %} text-muted {% endif %}">
+                Los nombres deben tener como minimo 2 caracteres y como maximo 50
+            </small>
+        </div>
+        <div class="form-group col-md-6 mb-2">
+            <label for="last_name">Apellidos</label>
+            <input type="text" class="form-control" placeholder="Apellidos" name="last_name" id="last_name"
+                   required value="{% if form.errors %}{{form.last_name.value}}{% else %}{{user.last_name}}{% endif %}">
+            <small id="flast_nameHelpBlock"
+                   class="form-tex {% if form.last_name.errors %}text-danger{% else %} text-muted {% endif %}">
+                Los apellidos deben tener como minimo 2 caracteres y como maximo 50
+            </small>
+        </div>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
+        {% if request.user.is_superuser and user.username != request.user.username%}
+        <span class="border bg-warning rounded">
+            <div class="custom-control custom-checkbox m-2">
+                <input type="checkbox" class="custom-control-input" id="is_superuser_edit" name="is_superuser"
+                {% if user.is_superuser %}checked{% endif %}>
+                <label class="custom-control-label" for="is_superuser_edit">Es superusuario</label>
+            </div>
+        </span>
+        {% endif %}
+        <button class="btn btn-primary mt-3" type="submit">Editar</button>
+    </div>
+</form>
+
+<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-column justify-content-center align-items-center">
+                <h1 class="modal-title text-danger" id="updateUserModalLabel">Precaución</h1>
+            </div>
+            <div class="modal-body">
+                Un superusuario puede:
+                <li class="ml-5">Crear usuarios</li>
+                <li class="ml-5">Borrar usuarios</li>
+                <li class="ml-5">Modificar usuarios</li>
+                <li class="ml-5">Crear y modificar facturas</li>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="updateUserModalCancel">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
