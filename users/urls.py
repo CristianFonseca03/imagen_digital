@@ -12,4 +12,5 @@ urlpatterns = [
     path(route='list-users/', view=UsersListView.as_view(), name='list-users'),
     path(route='delete/<str:username>/', view=UserDeleteView.as_view(), name='delete'),
     path(route='update/<str:username>/', view=UserUpdateView.as_view(), name='update'),
+    path(route='changePassword/<username>/', view=views.change_password_view, name='changePassword'),
 ]

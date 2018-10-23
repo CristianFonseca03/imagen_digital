@@ -10,7 +10,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 # Models
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
 
 # Forms
@@ -32,6 +31,26 @@ def login_view(request):
             return render(request, 'users/login.html', {'error': 'Usuario o contraseña invalidos'})
     return render(request, 'users/login.html')
 
+@login_required
+def change_password_view(request,username):
+    """Change password view."""
+    if request.user.username != username and not request.user.is_superuser:
+        return render(request, '403.html')
+    if request.method == 'POST':
+        username_exists = User.objects.filter(username=username).exists()
+        if not username_exists:
+            messages.error(request,"El usuario "+username+" no existe")
+            return redirect('user:home')
+        user = User.objects.get(username=username)
+        new_password = request.POST['new_password']
+        new_password_conf = request.POST['new_password_conf']
+        if new_password != new_password_conf:
+            return render(request, 'users/change_password.html', {'error': 'Las contraseñas no coinciden'})
+        user.set_password(new_password)
+        user.save()
+        messages.success(request, 'Contraseña modificada con exito')
+        return redirect('user:update', username=user.username)
+    return render(request,'users/change_password.html')
 
 @permission_required(('user.is_authenticated', 'user.is_superuser'))
 def signup_view(request):
@@ -50,7 +69,6 @@ def signup_view(request):
         template_name='users/signup.html',
         context={'form': form}
     )
-
 
 @login_required
 def logout_view(request):
@@ -104,7 +122,6 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     slug_url_kwarg = "username"
     template_name = 'users/update_user.html'
     success_message = 'Perfil editado satisfactoriamente'
-
     def get_success_url(self):
         """Return to user's profile."""
         username = self.object.username

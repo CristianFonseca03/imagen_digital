@@ -37,7 +37,7 @@ $(window).resize(function () {
     }
 });
 $(document).ready(function () {
-    const colors = ["bg-primary", "bg-danger", "bg-success", "bg-info", "bg-purple", "bg-pink"]
+    colors = ["bg-primary", "bg-danger", "bg-success", "bg-info", "bg-purple", "bg-pink"]
     $("#color-1").addClass(colors[randomNumber(0, 5)]);
     $("#color-2").addClass(colors[randomNumber(0, 5)]);
     $("#color-3").addClass(colors[randomNumber(0, 5)]);
@@ -61,4 +61,7 @@ $('#is_superuser_edit').on('click', function () {
     if ($(this).is(':checked')) {
         $('#updateUserModal').modal('show');
     }
+});
+$('#updateUserModalCancel').on('click', function () {
+    $("#is_superuser_edit").prop("checked", false);
 });

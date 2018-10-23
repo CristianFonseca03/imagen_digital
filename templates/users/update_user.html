@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block content %}
+{% include 'message.html' %}
 <div class="d-flex flex-row justify-content-center align-items-center flex-wrap">
     <div class="circle-module p-2 bg-primary m-5 d-flex justify-content-center flex-column text-center">
         <i class="fas fa-user-cog text-light"></i>
@@ -43,6 +44,9 @@
                 Los apellidos deben tener como minimo 2 caracteres y como maximo 50
             </small>
         </div>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
+        <a class="btn btn-info" href="{% url 'user:changePassword' user.username %}" role="button">Cambiar contraseña</a>
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center mt-4 mb-4">
         <span class="border bg-warning rounded {% if request.user.is_superuser and user.username == request.user.username%}d-none{% endif %}">
